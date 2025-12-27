@@ -1,4 +1,4 @@
-# An alternative to tool calling and MCP
+# AI does not need tools, it needs a coding workbench
 
 ## Summary
 
@@ -6,11 +6,13 @@ AI models can achieve complex tasks by writing code that performs these tasks. T
 
 Moreover, Tools and MCPs can be transformed into code APIs, so any AI agent with tools can be re-written as a code agent that achieves the same tasks cheaper and faster.
 
-Despite its advantages, code execution needs an environment where code runs safely.
+Despite its advantages, code needs an environment to run. "Agent spaces" is an open-source tool that spins up isolated code environments where AI can create files and run code safely. It also requires an open standard that allows any AI model to interact with the "Agent spaces" environment.
 
 ## Two standards
 
-AI agents are composable. Developers need a simple standard to give capabilities to their AI. Two approaches have emerged:
+AI agents are composable. Developers need a standard to give capabilities to their AI.
+
+Two approaches have emerged:
 
 ### Tool calling
 
@@ -18,9 +20,11 @@ The developer defines a set of available operations called tools. The AI can inc
 
 ### MCP
 
-An MCP server allows the AI to connect to an external API. Each MCP server exposes a set of tools the AI can call to interact with the API.
+An MCP server allows the AI to connect to an external API. MCP servers expose a set of tools the AI can call to interact with the API.
 
-## Problems with Tool calling and MCP
+MCPs and tool calling make it possible to group and distribute these capabilities.
+
+## Issues with Tool calling and MCP
 
 The two approaches present these problems:
 
@@ -100,6 +104,36 @@ Knowledge work requires an environment where an AI can store documents and work 
 
 ### Bonus: MCP's limitations
 
-MCP is a great initiative that speaks to an real need in AI engineering: AI needs to access external APIs to do their work.
+MCP is a great initiative that speaks to an real need in AI engineering: AI needs to access external APIs to do work. Each MCP is an API you can plug and play into your agent.
 
-However, in implementation
+However, its implementation is surprisingly limited when compared to the HTTP REST APIs or code APIs we are used to accessing in code. Each MCP server requires a process to run on the local machine. By contrast, code APIs are more flexible: they can run on a remote server or be part of the application's code.
+
+This begs the question of whether MCP is really necessary, or if traditional REST APIs and code SDKs would be equally capable. The AI could write code that calls these APIs and get the same outcomes.
+
+## I am not the first to notice
+
+Cloudflare introduced Code Mode. Anthropic is recommending code execution instead of tool calling in many scenarios.
+
+In the market, coding agents are leagues ahead of agents in other domains. A coding agent like Claude Code is an excellent choice in other areas beyond coding. The operating system, with its file system and code execution capabilities, is the workbench it needs to perform complex tasks end-to-end.
+
+## Can we replace everything with code?
+
+The possibility of replacing everything with code seems enticing. But is it feasable? 
+
+MCPs and tools are APIs, and they could be re-written as a program or a REST API.
+
+Even in existing systems where re-writing MCPs and tools is not a possibility, a compiler could generate a code API that proxies to an existing tool call or to an MCP.
+
+So the conclusion is: yes, everything can be replaced by code.
+
+## Where would the code run?
+
+As powerful as it is, having AI run code on your machine is dangerous. Therefore, I can predict a growing need for a technology that allows developers to spin up isolated environments on the fly, where AI has the tools to do its work, nothing more, nothing less. 
+
+To work safely, the environment needs to allow and restrict access to terminal commands, code APIs, files and folders.
+
+Private companies like Daytona have successfully built environments with these characteristics. However, with safety being a deciding factor, I wonder if there is a need for an open source framework for managing AI coding environments. An open framework would make it easy to audit and find vulnerabilities. It would also have the benefit of being self-hostable.
+
+Another factor is the popularity of serverless compute. In this paradigm, developers build services without being in control of the server infrastructure. AI coding environments could be offered as a cloud service.
+
+## A protocol for 
