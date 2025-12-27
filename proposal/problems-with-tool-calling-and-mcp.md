@@ -2,11 +2,11 @@
 
 ## Summary
 
-AI models can achieve complex tasks by writing code that performs these tasks. This approach is more efficient and reliable than tools and MCP servers. 
+AI models can achieve complex tasks by writing code. This approach is more efficient and reliable than tools and MCP servers. 
 
-Moreover, Tools and MCPs can be transformed into code APIs, so any AI agent with tools can be re-written as a code agent that achieves the same tasks cheaper and faster.
+Moreover, tools and MCPs can be transformed into code APIs, so any AI agent with tools can be re-written as a code agent that achieves the same tasks cheaper and faster.
 
-Despite its advantages, code needs an environment to run. "Agent spaces" is an open-source tool that spins up isolated code environments where AI can create files and run code safely. It also requires an open standard that allows any AI model to interact with the "Agent spaces" environment.
+Despite its advantages, code needs an environment to run. Here, I introduce "Agent spaces", an open-source framework to create and manage isolated environments where AI can create files and run code safely. I also propose an open standard that allows any AI model to carry out complex tasks via code execution.
 
 ## Two standards
 
