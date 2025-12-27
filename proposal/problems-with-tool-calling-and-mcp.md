@@ -275,7 +275,7 @@ Tools and MCPs have allowed me to build very capable applications. However, I ho
 
 I believe that an open-source framework for AI code execution, along with a standard for code execution agents, would be a step forward for the industry. However, it is not an easy project to build.
 
-Looking forward, the next step is to define the protocol an AI agent would follow to perform its work via code execution. Next, I'll define the API for the code execution framework. Then, I'll start building the framework itself. It's so early that I don't even have a name for the framework, yet!
+Looking forward, the next step is to define the protocol an AI agent would follow to perform its work via code execution. Next, I'll define the API for the code execution framework. Then, I'll start building the framework itself. 
 
 The requirements for the framework are:
 - Open-source
@@ -288,3 +288,4 @@ The requirements for the framework are:
 - Initially, focused on running code in a limited number of languages (starting with TypeScript on Bun)
 - Simple and flexible API, great developer experience.
 
+It's so early that I don't even have a name for the framework, yet! I'll call it "Agent spaces" for now.
