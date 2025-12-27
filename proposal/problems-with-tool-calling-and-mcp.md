@@ -4,9 +4,9 @@
 
 AI models can achieve complex tasks by writing code. This approach is more efficient and reliable than tools and MCP servers. 
 
-Moreover, tools and MCPs can be transformed into code APIs, so any AI agent with tools can be re-written as a code agent that achieves the same tasks cheaper and faster.
+Here, I explain how any tool or MCP can be transformed into a code API. This way, any AI agent can be re-written as a code agent.
 
-Despite its advantages, code needs an environment to run. Here, I introduce "Agent spaces", an open-source framework to create and manage isolated environments where AI can create files and run code safely. I also propose an open standard that allows any AI model to carry out complex tasks via code execution.
+Despite its advantages, code needs an environment to run. So I introduce "Agent spaces", an open-source framework to create and manage isolated environments where AI can create files and run code safely. I also propose an open standard that allows any AI model to carry out complex tasks via code execution.
 
 ## Two standards
 
