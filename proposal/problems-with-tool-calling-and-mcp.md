@@ -281,10 +281,10 @@ The requirements for the framework are:
 - Open-source
 - Self-hostable
 - Ability to spin up code execution environments on the fly, and run code in a sandboxed environment
-- Includes utilities to convert tools and MCPs into code execution operations.
+- Can convert tools and MCPs into code execution operations.
 - Accessible through a REST API or a TypeScript SDK
-- AI agents can interact with it via traditional tool calling, or with the code execution protocol described above.
-- Ability to limit the actions, commands, files and APIs accessible to the AI agent.
+- AI agents can interact with it via traditional tool calling, or with the code execution protocol described above (operations and events).
+- Fine-grained access control: limit the actions, commands, files and APIs accessible to the AI agent.
 - Initially, focused on running code in a limited number of languages (starting with TypeScript on Bun)
-- Simple and flexible API that developers will love.
+- Simple and flexible API, great developer experience.
 
