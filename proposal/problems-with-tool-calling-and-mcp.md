@@ -198,5 +198,7 @@ There are several types of events:
 
 The developer cannot define other types of operations or events. Any other operation is performed by having the AI write code.
 
-Any rules or context can be a file in the workspace. For example, Anthropic introduced the Skills standard. Every skill is a file and list of utilities that allow the AI to perform tasks.
+Any rules or context can be a file in the workspace. For example, Anthropic introduced the Skills standard. Every skill is a file and a list of utilities that allow the AI to perform tasks. It is a refreshing change from the traditional tool calling and MCP paradigms Anthropic themselves pioneered.
+
+On the initial user message, additional context can be provided by adding files to the list of events, even if the AI did not create an operation to read them. This way, the AI can be pointed to the context and rules it needs to follow.
 
