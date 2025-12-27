@@ -122,11 +122,11 @@ The possibility of replacing everything with code seems enticing. But is it feas
 
 MCPs and tools are APIs, and they could be re-written as a program or a REST API.
 
-Even in existing systems where re-writing MCPs and tools is not a possibility, a compiler could generate a code API that proxies to an existing tool call or to an MCP.
+Even in existing systems where re-writing MCPs and tools is not a possibility, a compiler could generate a code API that proxies to an existing tool call or to an MCP. If the tool needs user approval, the code execution would stop and wait for the user interaction.
 
 So the conclusion is: yes, everything can be replaced by code.
 
-## Where would the code run?
+## Where does the code run?
 
 As powerful as it is, having AI run code on your machine is dangerous. Therefore, I can predict a growing need for a technology that allows developers to spin up isolated environments on the fly, where AI has the tools to do its work, nothing more, nothing less. 
 
@@ -136,4 +136,67 @@ Private companies like Daytona have successfully built environments with these c
 
 Another factor is the popularity of serverless compute. In this paradigm, developers build services without being in control of the server infrastructure. AI coding environments could be offered as a cloud service.
 
-## A protocol for 
+## A protocol for code execution
+
+Here is an alternative protocol to tool calling that allows the AI to perform any action with code execution.
+
+This protocol is extremely simple and does not require
+
+On the one hand, the AI can interact with the user and the coding workspace by generating a list of code operations:
+
+```json
+[
+    {
+        "type": "message",
+        "content": "I'm going to create a train schedule reminder"
+    },
+    {
+        "type": "createFile",
+        "path": "code.ts",
+        "content": "const trip = getTrainSchedule().filter(trip => trip.hour === 8)\ncreateNote(trip.toString())"
+    },
+    {
+        "type": "shell",
+        "command": "bun run code.ts"
+    },
+]
+```
+
+On the other hand, the AI receives a list of events. These events are the result of the code operations.
+
+```json
+[
+    {
+        "type": "createFile",
+        "path": "code.ts",
+        "success": true
+    },
+    {
+        "type": "shell",
+        "stdout": "Note created: 8am train schedule"
+    }
+]
+```
+
+There are several types of operations:
+
+- message
+- createFile
+- readFile
+- editFile
+- deleteFile
+- shell
+
+There are several types of events:
+
+- userMessage
+- createFile
+- readFile
+- editFile
+- deleteFile
+- shell
+
+The developer cannot define other types of operations or events. Any other operation is performed by having the AI write code.
+
+Any rules or context can be a file in the workspace. For example, Anthropic introduced the Skills standard. Every skill is a file and list of utilities that allow the AI to perform tasks.
+
