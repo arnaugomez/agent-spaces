@@ -1,8 +1,8 @@
-# AI does not need tools, it needs a coding workbench
+# Code: the new standard for AI agents
 
 ## Summary
 
-AI models can achieve complex tasks by writing code that performs these tasks. This approach is significantly more efficient and reliable than interacting with tools and MCP servers. 
+AI models can achieve complex tasks by writing code that performs these tasks. This approach is more efficient and reliable than tools and MCP servers. 
 
 Moreover, Tools and MCPs can be transformed into code APIs, so any AI agent with tools can be re-written as a code agent that achieves the same tasks cheaper and faster.
 
@@ -196,9 +196,95 @@ There are several types of events:
 - deleteFile
 - shell
 
-The developer cannot define other types of operations or events. Any other operation is performed by having the AI write code.
+The developer cannot define other types of operations or events. Any tools and MCPs are called by having the AI write code.
 
-Any rules or context can be a file in the workspace. For example, Anthropic introduced the Skills standard. Every skill is a file and a list of utilities that allow the AI to perform tasks. It is a refreshing change from the traditional tool calling and MCP paradigms Anthropic themselves pioneered.
+An advantage of workspaces is that any rules or context can be a file. For example, Anthropic introduced the Skills standard. Every skill is a file and a list of utilities that allow the AI to perform a certain task. It is a refreshing change from the traditional tool calling and MCP paradigms Anthropic themselves pioneered.
 
 On the initial user message, additional context can be provided by adding files to the list of events, even if the AI did not create an operation to read them. This way, the AI can be pointed to the context and rules it needs to follow.
+
+For example, an agent run would look like this:
+
+First user message:
+
+```json
+[
+    {
+        "type": "userMessage",
+        "content": "Create a train schedule reminder"
+    },
+    {
+        "type": "readFile",
+        "path": "rules.txt",
+        "content": "Use the getTrainSchedule tool to get the train schedule"
+    }
+]
+```
+
+AI response:
+
+```json
+[
+    {
+        "type": "message",
+        "content": "I'm going to create a train schedule reminder"
+    },
+    {
+        "type": "createFile",
+        "path": "code.ts",
+        "content": "const trip = getTrainSchedule().filter(trip => trip.hour === 8)\ncreateNote(trip.toString())"
+    },
+    {
+        "type": "shell",
+        "command": "bun run code.ts"
+    },
+]
+```
+
+User response:
+
+```json
+[
+    {
+        "type": "createFile",
+        "path": "code.ts",
+        "success": true
+    },
+    {
+        "type": "shell",
+        "stdout": "Note created: 8am train schedule"
+    }
+]
+```
+
+Agent response:
+
+```json
+[
+    {
+        "type": "message",
+        "content": "The train schedule reminder was created."
+    }
+]
+```
+
+## Tools and MCPs are great, too
+
+Tools and MCPs have allowed me to build very capable applications. However, I hope the industry will acknowledge their limitations and develop new approaches to help the AI perform long-running tasks in a more efficient and reliable way. Code has always been the language of automation, could it become the new standard for AI agents?
+
+## A plan for the future
+
+I believe that an open-source framework for AI code execution, along with a standard for code execution agents, would be a step forward for the industry. However, it is not an easy project to build.
+
+Looking forward, the next step is to define the protocol an AI agent would follow to perform its work via code execution. Next, I'll define the API for the code execution framework. Then, I'll start building the framework itself. It's so early that I don't even have a name for the framework, yet!
+
+The requirements for the framework are:
+- Open-source
+- Self-hostable
+- Ability to spin up code execution environments on the fly, and run code in a sandboxed environment
+- Includes utilities to convert tools and MCPs into code execution operations.
+- Accessible through a REST API or a TypeScript SDK
+- AI agents can interact with it via traditional tool calling, or with the code execution protocol described above.
+- Ability to limit the actions, commands, files and APIs accessible to the AI agent.
+- Initially, focused on running code in a limited number of languages (starting with TypeScript on Bun)
+- Simple and flexible API that developers will love.
 
