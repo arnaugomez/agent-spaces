@@ -1,0 +1,11 @@
+---
+globs: *.md
+alwaysApply: false
+---
+When referencing other Markdown files in the project, always use Markdown links.
+
+```markdown
+[Protocol PRD](../plan/protocol-prd.md)
+```
+
+In links, always use relative paths from the root of the project.
