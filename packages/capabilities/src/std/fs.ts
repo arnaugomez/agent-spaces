@@ -23,3 +23,5 @@ export const fs = createCapabilityProxy<{
   exists: { name: 'exists', description: 'Check if a file exists', requiresApproval: false },
 });
 
+
+

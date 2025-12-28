@@ -45,3 +45,5 @@ EXPOSE 3000
 # Run
 CMD ["bun", "run", "apps/server/src/index.ts"]
 
+
+

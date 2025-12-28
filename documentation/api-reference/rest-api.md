@@ -393,3 +393,5 @@ GET /health/ready
 | `RATE_LIMITED` | 429 | Too many requests |
 | `INTERNAL_ERROR` | 500 | Server error |
 
+
+

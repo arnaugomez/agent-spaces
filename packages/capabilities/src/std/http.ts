@@ -27,3 +27,5 @@ export const http = createCapabilityProxy<{
   delete: { name: 'delete', description: 'HTTP DELETE request', requiresApproval: false },
 });
 
+
+

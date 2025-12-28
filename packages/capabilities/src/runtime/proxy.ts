@@ -54,3 +54,5 @@ export function createCapabilityProxy<T extends Record<string, unknown>>(
   return proxy as T;
 }
 
+
+

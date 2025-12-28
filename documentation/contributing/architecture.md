@@ -239,3 +239,5 @@ Shell → Policy check → Docker exec → Capture stdout/stderr → Emit event
 2. Register with capability registry
 3. Inject into sandbox runtime
 
+
+

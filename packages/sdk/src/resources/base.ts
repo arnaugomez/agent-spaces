@@ -7,3 +7,5 @@ export abstract class BaseResource {
   constructor(protected http: HttpClient) {}
 }
 
+
+
