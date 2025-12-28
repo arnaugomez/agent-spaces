@@ -1,0 +1,24 @@
+{
+  "name": "agent-spaces",
+  "private": true,
+  "workspaces": ["packages/*", "apps/*", "evals"],
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "test": "turbo test",
+    "test:unit": "turbo test:unit",
+    "test:integration": "turbo test:integration",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "format": "biome format --write .",
+    "typecheck": "turbo typecheck",
+    "clean": "turbo clean && rm -rf node_modules",
+    "db:migrate": "bun --filter @agent-spaces/core db:migrate",
+    "db:generate": "bun --filter @agent-spaces/core db:generate"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.3.10",
+    "turbo": "^2.7.2"
+  },
+  "packageManager": "bun@1.1.0"
+}

@@ -1,0 +1,4 @@
+---
+alwaysApply: true
+---
+When you install dependencies, do it by running shell commands, never write the dependency version yourself.
